@@ -23,6 +23,11 @@ public class MybatisConfig {
     @Resource
     private DataSource dataSource;
 
+    /**
+     * Mybatis的核心 一旦被创建,应该在应用执行期间都存在
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();

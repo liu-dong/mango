@@ -28,11 +28,25 @@ public class SwaggerConfig {
     @Bean
     public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.any()).paths(PathSelectors.any()).build();
+                .apis(RequestHandlerSelectors.any())//指定提供接口所在的基包 any()表示所有接口
+                .paths(PathSelectors.any()).build();
     }
 
+    /**
+     * API说明信息(即API的包含内容)
+     * @return
+     */
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder().build();
+
+        /*  //该套 API 说明，包含作者、简介、版本、host、服务URL
+            return new ApiInfoBuilder()
+                .title("demo api 说明")//标题
+                .contact(new Contact("allen","null","name@example.com"))//作者
+                .version("0.1")//版本
+                .termsOfServiceUrl("localhost:8080/demo1/")//地址
+                .description("demo api")//说明
+                .build();*/
     }
 
 }

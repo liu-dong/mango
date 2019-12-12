@@ -5,6 +5,7 @@
       <input v-model="message">
     </label>
     <button v-on:click="reverseMessage">反转</button>
+    <el-button type="primary">主要按钮</el-button>
     <ol>
       <li v-for="todo in todoList">
         {{ todo.text }}

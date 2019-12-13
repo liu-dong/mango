@@ -1,13 +1,30 @@
 <template>
   <div class="page">
     <h2>Login Page</h2>
+    <el-button type="primary" @click="login()">登录</el-button>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "Login"
+  import Cookies from "js-cookie"
+  import router from '@/router'
+
+  export default {
+    name: 'Login',
+    methods: {
+      login() {
+        this.$api.login.login().then(function (res) {
+          alert(res.data.token)
+          debugger
+          Cookies.set('token',res.data.token) // 放置token到Cookie
+          router.push('/')  // 登录成功，跳转到主页
+        }).catch(function (res) {
+          debugger
+          alert(res);
+        });
+      }
     }
+  }
 </script>
 
 <style scoped>

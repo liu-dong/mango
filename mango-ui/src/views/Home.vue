@@ -6,8 +6,8 @@
     <el-button type="primary" @click="testAxios()">测试Axios调用</el-button>
     <el-button type="primary" @click="getUser()">获取用户信息</el-button>
     <el-button type="primary" @click="getMenu()">获取菜单信息</el-button>
-    <!--<h3 >{{$t('common.doc')}}</h3>-->
-    <h3>国际化</h3>
+    <h3 >{{$t('common.versionName')}}</h3>
+    <!--<h3>国际化</h3>-->
     <el-button type="success" @click="changeLanguage('zh_cn')">简体中文</el-button>
     <el-button type="success" @click="changeLanguage('en_us')">English</el-button>
   </div>
@@ -20,7 +20,6 @@
     name: "Home",
     methods: {
       changeLanguage(lang) {
-        debugger
         lang === '' ? 'zh_cn' : lang
         this.$i18n.locale = lang
         // this.langVisible = false

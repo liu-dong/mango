@@ -1,7 +1,7 @@
 <template>
   <el-form :model="loginForm" :rules="fieldRules" ref="loginForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
     <h2 class="title" style="padding-left:22px;" >系统登录</h2>
-    <el-form-item prop="account">
+    <el-form-item prop="account" v-popover="">
       <el-input type="text" v-model="loginForm.account" auto-complete="off" placeholder="账号"></el-input>
     </el-form-item>
     <el-form-item prop="password">

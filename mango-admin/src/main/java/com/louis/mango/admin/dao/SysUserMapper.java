@@ -1,6 +1,7 @@
 package com.louis.mango.admin.dao;
 
 import com.louis.mango.admin.model.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface SysUserMapper {
      * @return
      */
     List<SysUser> findAll();
+
+    SysUser findByName(@Param(value="name") String name);
 }

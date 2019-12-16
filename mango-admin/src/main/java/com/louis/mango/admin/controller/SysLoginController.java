@@ -3,7 +3,7 @@ package com.louis.mango.admin.controller;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.louis.mango.admin.model.SysUser;
-import com.louis.mango.admin.security.JwtAuthenticatioToken;
+import com.louis.mango.admin.security.JwtAuthenticationToken;
 import com.louis.mango.admin.service.SysUserService;
 import com.louis.mango.admin.util.PasswordUtils;
 import com.louis.mango.admin.util.SecurityUtils;
@@ -90,7 +90,7 @@ public class SysLoginController {
             return HttpResult.error("账号已被锁定,请联系管理员");
         }
         // 系统登录认证
-        JwtAuthenticatioToken token = SecurityUtils.login(request, username, password, authenticationManager);
+        JwtAuthenticationToken token = SecurityUtils.login(request, username, password, authenticationManager);
         return HttpResult.ok(token);
     }
 }

@@ -23,11 +23,12 @@ public class HttpUtils {
 	public static HttpServletRequest getHttpServletRequest() {
 		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 	}
-	
+
 	/**
 	 * 输出信息到浏览器
 	 * @param response
-	 * @param message
+	 * @param code
+	 * @param msg
 	 * @throws IOException
 	 */
 	public static void print(HttpServletResponse response, int code, String msg) throws IOException {

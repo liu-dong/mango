@@ -1,6 +1,6 @@
 package com.louis.mango.admin.util;
 
-import com.louis.mango.admin.security.JwtAuthenticatioToken;
+import com.louis.mango.admin.security.JwtAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,8 +24,8 @@ public class SecurityUtils {
 	 * @param authenticationManager
 	 * @return
 	 */
-	public static JwtAuthenticatioToken login(HttpServletRequest request, String username, String password, AuthenticationManager authenticationManager) {
-		JwtAuthenticatioToken token = new JwtAuthenticatioToken(username, password);
+	public static JwtAuthenticationToken login(HttpServletRequest request, String username, String password, AuthenticationManager authenticationManager) {
+		JwtAuthenticationToken token = new JwtAuthenticationToken(username, password);
 		token.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 		// 执行登录认证过程
 	    Authentication authentication = authenticationManager.authenticate(token);
@@ -62,7 +62,7 @@ public class SecurityUtils {
 		}
 		return username;
 	}
-	
+
 	/**
 	 * 获取用户名
 	 * @return
@@ -77,7 +77,7 @@ public class SecurityUtils {
 		}
 		return username;
 	}
-	
+
 	/**
 	 * 获取当前登录信息
 	 * @return
@@ -89,5 +89,5 @@ public class SecurityUtils {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		return authentication;
 	}
-	
+
 }

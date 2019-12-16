@@ -35,7 +35,7 @@ public class FileUtils {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * 读取txt文件的内容
 	 * @param file 想要读取的文件路径
@@ -44,7 +44,7 @@ public class FileUtils {
 	public static String readFile(String file){
 		return readFile(new File(file));
 	}
-	
+
     /**
      * 读取txt文件的内容
      * @param file 想要读取的文件对象
@@ -59,13 +59,13 @@ public class FileUtils {
             	//使用readLine方法，一次读一行
                 result.append(System.lineSeparator() + s);
             }
-            br.close();    
+            br.close();
         }catch(Exception e){
             e.printStackTrace();
         }
         return result.toString();
     }
-    
+
     /**
 	 * 递归删除文件
 	 * @param file
@@ -77,7 +77,7 @@ public class FileUtils {
 	        File[] subFiles = file.listFiles();
 	        // 遍历该目录
 	        for (File subFile : subFiles) {
-	            // 递归调用删除该文件: 如果这是一个空目录或文件, 一次递归就可删除. 
+	            // 递归调用删除该文件: 如果这是一个空目录或文件, 一次递归就可删除.
 	        	// 如果这是一个非空目录, 多次递归清空其内容后再删除
 	            deleteFile(subFile);
 	        }
@@ -85,7 +85,7 @@ public class FileUtils {
 	    // 删除空目录或文件
 	    file.delete();
 	}
-	
+
 	/**
 	 * 获取项目根路径
 	 * @return
@@ -100,10 +100,9 @@ public class FileUtils {
 	 * @return
 	 */
 	public static String getClassPath() {
-		String classPath = FileUtils.class.getClassLoader().getResource("").getPath();
-		return classPath;
+		return FileUtils.class.getClassLoader().getResource("").getPath();
 	}
-	
+
 	public static void main(String[] args){
 //        File file = new File("D:/errlog.txt");
 //        System.out.println(readFile(file));

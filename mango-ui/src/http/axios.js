@@ -8,7 +8,9 @@ import Cookies from "js-cookie";
 import router from '@/router'
 
 export default function $axios(options) {
+    debugger
   return new Promise((resolve, reject) => {
+    debugger
     //导入类配置文件的信息
     const instance = axios.create({
       baseURL: config.baseUrl,// 基础url前缀
@@ -32,7 +34,7 @@ export default function $axios(options) {
       },
       error => {
         return Promise.reject(error)
-        /*// 请求发生错误时
+        // 请求发生错误时
         console.log('request:', error)
         // 判断请求超时
         if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
@@ -48,7 +50,7 @@ export default function $axios(options) {
             path: `/error/${errorStatus}`
           })
         }
-        return Promise.reject(error) // 在调用的那边可以拿到(catch)你想返回的错误信息*/
+        return Promise.reject(error) // 在调用的那边可以拿到(catch)你想返回的错误信息
       }
     )
 
@@ -58,7 +60,7 @@ export default function $axios(options) {
         return response.data
       },
       err => {
-        /*if (err && err.response) {
+        if (err && err.response) {
           switch (err.response.status) {
             case 400:
               err.message = '请求错误'
@@ -96,7 +98,7 @@ export default function $axios(options) {
             default:
           }
         }
-        console.error(err)*/
+        console.error(err)
         return Promise.reject(err) // 返回接口返回的错误信息
       }
     )

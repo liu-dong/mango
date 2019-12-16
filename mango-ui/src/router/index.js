@@ -31,22 +31,5 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     }
-    /*{
-      path: '/index',
-      name: 'Index',
-      component: Index,
-      children:[
-        {
-          path: '/success',
-          name: 'Success',
-          component: Success
-        },{
-          path: '/fail',
-          name: 'Fail',
-          component: Fail
-        }
-      ]
-    }*/
-
   ]
 })

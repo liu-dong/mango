@@ -11,7 +11,7 @@
       <div class="registe-info">
           <span class="registe-info">
             <li class="fa fa-clock-o"></li>
-            {{ user.registeInfo }}
+            {{ user.registerInfo }}
           </span>
       </div>
     </div>
@@ -64,7 +64,7 @@
           name: "admin",
           avatar: "@/assets/user.png",
           role: "超级管理员",
-          registeInfo: "注册时间：2018-12-25 "
+          registerInfo: "注册时间：2018-12-25 "
         }
       }
     },

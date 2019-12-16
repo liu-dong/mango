@@ -71,14 +71,14 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-  import Hamburger from "@/components/Hamburger"
-  import ThemePicker from "@/components/ThemePicker"
-  import NoticePanel from "@/views/Core/NoticePanel"
-  import MessagePanel from "@/views/Core/MessagePanel"
-  import PersonalPanel from "@/views/Core/PersonalPanel"
+    import {mapState} from 'vuex'
+    import Hamburger from "@/components/Hamburger"
+    import ThemePicker from "@/components/ThemePicker"
+    import NoticePanel from "@/views/Core/NoticePanel"
+    import MessagePanel from "@/views/Core/MessagePanel"
+    import PersonalPanel from "@/views/Core/PersonalPanel"
 
-  export default {
+    export default {
     components: {
       Hamburger,
       ThemePicker,
@@ -92,7 +92,7 @@
           name: "Louis",
           avatar: "",
           role: "超级管理员",
-          registeInfo: "注册时间：2018-12-20 "
+          registerInfo: "注册时间：2018-12-20 "
         },
         activeIndex: '1',
         langVisible: false
@@ -122,6 +122,7 @@
     },
     mounted() {
       var user = sessionStorage.getItem("user")
+        debugger
       if (user) {
         this.user.name = user
         this.user.avatar = require("@/assets/user.png")

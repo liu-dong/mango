@@ -2,6 +2,8 @@ import axios from '../axios'
 
 /*
  * 用户管理模块
+ *    在axios中，params是添加到url的请求字符串中的，用于get请求。
+ *               data是添加到请求体（body）中的， 用于post请求。
  */
 
 // 保存
@@ -29,14 +31,13 @@ export const findPage = (data) => {
   })
 };
 // 查询用户信息
-export const findByName = (data) => {
-  debugger
+export const findByName = (params) => {
   return axios({
     url: '/user/findByName',
     method: 'get',
-    data
+    params
   })
-};
+}
 // 查找用户的菜单权限标识集合
 export const findPermissions = (params) => {
   return axios({

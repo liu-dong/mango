@@ -3,6 +3,7 @@ package com.louis.mango.admin.controller;
 import com.louis.mango.admin.service.SysUserService;
 import com.louis.mango.core.http.HttpResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +18,7 @@ public class SysUserController {
         return sysUserService.findAll();
     }
 
-//    @PreAuthorize("hasAuthority('sys:user:view')")
+    @PreAuthorize("hasAuthority('sys:user:view')")
     @GetMapping(value="/findByName")
     public HttpResult findByUserName(@RequestParam String name) {
         return HttpResult.ok(sysUserService.findByName(name));

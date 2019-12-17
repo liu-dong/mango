@@ -13,13 +13,10 @@
     <!-- 导航菜单 -->
     <span class="navbar">
       <el-menu :default-active="activeIndex" class="el-menu-demo"
-               :background-color="themeColor" text-color="#fff" active-text-color="#ffd04b" mode="horizontal"
-               @select="selectNavBar()">
+               :background-color="themeColor" text-color="#fff" active-text-color="#ffd04b" mode="horizontal" @select="selectNavBar()">
         <el-menu-item index="1" @click="$router.push('/')">{{$t("common.home")}}</el-menu-item>
-        <el-menu-item index="2"
-                      @click="openWindow('https://gitee.com/liuge1988/kitty/wikis/Home')">{{$t("common.doc")}}</el-menu-item>
-        <el-menu-item index="3"
-                      @click="openWindow('https://www.cnblogs.com/xifengxiaoma/')">{{$t("common.blog")}}</el-menu-item>
+        <el-menu-item index="2" @click="openWindow('https://gitee.com/liuge1988/kitty/wikis/Home')">{{$t("common.doc")}}</el-menu-item>
+        <el-menu-item index="3" @click="openWindow('https://www.cnblogs.com/xifengxiaoma/')">{{$t("common.blog")}}</el-menu-item>
       </el-menu>
     </span>
     <!-- 工具栏 -->
@@ -42,7 +39,7 @@
         </el-menu-item>
         <el-menu-item index="3" v-popover:popover-message>
           <!-- 我的私信 -->
-          <el-badge :value="5" :max="99" class="badge" type="error">
+          <el-badge :value="5" :max="99" class="badge">
             <li style="color:#fff;" class="fa fa-envelope-o fa-lg"></li>
           </el-badge>
           <el-popover ref="popover-message" placement="bottom-end" trigger="click">
@@ -51,7 +48,7 @@
         </el-menu-item>
         <el-menu-item index="4" v-popover:popover-notice>
           <!-- 系统通知 -->
-          <el-badge :value="4" :max="99" class="badge" type="error">
+          <el-badge :value="4" :max="99" class="badge">
             <li style="color:#fff;" class="fa fa-bell-o fa-lg"></li>
           </el-badge>
           <el-popover ref="popover-notice" placement="bottom-end" trigger="click">
@@ -71,14 +68,14 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
-    import Hamburger from "@/components/Hamburger"
-    import ThemePicker from "@/components/ThemePicker"
-    import NoticePanel from "@/views/Core/NoticePanel"
-    import MessagePanel from "@/views/Core/MessagePanel"
-    import PersonalPanel from "@/views/Core/PersonalPanel"
+  import {mapState} from 'vuex'
+  import Hamburger from "@/components/Hamburger"
+  import ThemePicker from "@/components/ThemePicker"
+  import NoticePanel from "@/views/Core/NoticePanel"
+  import MessagePanel from "@/views/Core/MessagePanel"
+  import PersonalPanel from "@/views/Core/PersonalPanel"
 
-    export default {
+  export default {
         components: {
             Hamburger,
             ThemePicker,
@@ -117,10 +114,9 @@
         },
         mounted() {
             var user = sessionStorage.getItem("user");
-        debugger
             if (user) {
-                let params = {name:user};
-                this.$api.user.findByName(params).then((res) => {
+                let data = {name:user};
+                this.$api.user.findByName(data).then((res) => {
                     debugger
                     if(res.code === 200) {
                         this.user = res.data;
@@ -150,19 +146,15 @@
     border-left-width: 1px;
     border-left-style: solid;
   }
-
   .hamburg {
     float: left;
   }
-
   .navbar {
     float: left;
   }
-
   .toolbar {
     float: right;
   }
-
   .lang-item {
     font-size: 16px;
     padding-left: 8px;
@@ -170,17 +162,14 @@
     padding-bottom: 8px;
     cursor: pointer;
   }
-
   .lang-item:hover {
     font-size: 18px;
     background: #b0d6ce4d;
   }
-
   .user-info {
     font-size: 20px;
     color: #fff;
     cursor: pointer;
-
     img {
       width: 40px;
       height: 40px;
@@ -189,15 +178,12 @@
       float: right;
     }
   }
-
   .badge {
     line-height: 18px;
   }
-
   .position-left {
     left: 200px;
   }
-
   .position-collapse-left {
     left: 65px;
   }

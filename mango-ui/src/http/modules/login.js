@@ -6,6 +6,7 @@ import axios from '../axios'
 
 // 登录
 export const login = data => {
+  debugger
   return axios({
     url: 'login',
     method: 'post',

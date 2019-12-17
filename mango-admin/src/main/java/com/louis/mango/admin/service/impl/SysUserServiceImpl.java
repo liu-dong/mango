@@ -3,9 +3,11 @@ package com.louis.mango.admin.service.impl;
 import com.louis.mango.admin.dao.SysRoleMapper;
 import com.louis.mango.admin.dao.SysUserMapper;
 import com.louis.mango.admin.dao.SysUserRoleMapper;
+import com.louis.mango.admin.model.SysMenu;
 import com.louis.mango.admin.model.SysRole;
 import com.louis.mango.admin.model.SysUser;
 import com.louis.mango.admin.model.SysUserRole;
+import com.louis.mango.admin.service.SysMenuService;
 import com.louis.mango.admin.service.SysUserService;
 import com.louis.mango.common.utils.DateTimeUtils;
 import com.louis.mango.common.utils.PoiUtils;
@@ -20,20 +22,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class SysUserServiceImpl implements SysUserService {
-    
+
     @Autowired
     private SysUserMapper sysUserMapper;
     @Autowired
     private SysRoleMapper sysRoleMapper;
     @Autowired
     private SysUserRoleMapper sysUserRoleMapper;
+    @Autowired
+    private SysMenuService sysMenuService;
 
     @Override
     public SysUser findByName(String username) {
@@ -46,12 +47,19 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public Set<String> findPermissions(String userName) {
-        return null;
+        Set<String> perms = new HashSet<>();
+        List<SysMenu> sysMenus = sysMenuService.findByUser(userName);
+        for(SysMenu sysMenu:sysMenus) {
+            if(sysMenu.getPerms() != null && !"".equals(sysMenu.getPerms())) {
+                perms.add(sysMenu.getPerms());
+            }
+        }
+        return perms;
     }
 
     @Override
     public List<SysUser> findAll() {
-        return sysUserMapper.findAll();
+        return sysUserMapper.findPage();
     }
 
     @Override

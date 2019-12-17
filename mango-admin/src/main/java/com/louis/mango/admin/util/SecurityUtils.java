@@ -21,11 +21,12 @@ public class SecurityUtils {
 	 * @param request
 	 * @param username
 	 * @param password
-	 * @param authenticationManager
+	 * @param authenticationManager AuthenticationManager 认证管理接口类 定义了认证方法 authenticate()
 	 * @return
 	 */
 	public static JwtAuthenticationToken login(HttpServletRequest request, String username, String password, AuthenticationManager authenticationManager) {
 		JwtAuthenticationToken token = new JwtAuthenticationToken(username, password);
+		//得到服务器地址和sessionId
 		token.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 		// 执行登录认证过程
 	    Authentication authentication = authenticationManager.authenticate(token);

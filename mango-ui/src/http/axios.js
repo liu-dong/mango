@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import router from '@/router'
 
 export default function $axios(options) {
+  debugger
   return new Promise((resolve, reject) => {
     debugger
     //导入类配置文件的信息

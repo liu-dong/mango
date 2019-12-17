@@ -1,13 +1,12 @@
 package com.louis.mango.admin.model;
 
-import java.util.Date;
+import java.util.List;
 
-public class SysMenu {
-    private Long id;
-
-    private String name;
+public class SysMenu extends BaseModel {
 
     private Long parentId;
+
+    private String name;
 
     private String url;
 
@@ -19,117 +18,101 @@ public class SysMenu {
 
     private Integer orderNum;
 
-    private String createBy;
-
-    private Date createTime;
-
-    private String lastUpdateBy;
-
-    private Date lastUpdateTime;
-
     private Byte delFlag;
 
-    public Long getId() {
-        return id;
-    }
+    // 非数据库字段
+    private String parentName;
+    // 非数据库字段
+    private Integer level;
+    // 非数据库字段
+    private List<SysMenu> children;
+    
+	public Long getParentId() {
+		return parentId;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Long getParentId() {
-        return parentId;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public String getPerms() {
+		return perms;
+	}
 
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
-    }
+	public void setPerms(String perms) {
+		this.perms = perms;
+	}
 
-    public String getPerms() {
-        return perms;
-    }
+	public Integer getType() {
+		return type;
+	}
 
-    public void setPerms(String perms) {
-        this.perms = perms == null ? null : perms.trim();
-    }
+	public void setType(Integer type) {
+		this.type = type;
+	}
 
-    public Integer getType() {
-        return type;
-    }
+	public String getIcon() {
+		return icon;
+	}
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 
-    public String getIcon() {
-        return icon;
-    }
+	public Integer getOrderNum() {
+		return orderNum;
+	}
 
-    public void setIcon(String icon) {
-        this.icon = icon == null ? null : icon.trim();
-    }
+	public void setOrderNum(Integer orderNum) {
+		this.orderNum = orderNum;
+	}
 
-    public Integer getOrderNum() {
-        return orderNum;
-    }
+	public Byte getDelFlag() {
+		return delFlag;
+	}
 
-    public void setOrderNum(Integer orderNum) {
-        this.orderNum = orderNum;
-    }
+	public void setDelFlag(Byte delFlag) {
+		this.delFlag = delFlag;
+	}
 
-    public String getCreateBy() {
-        return createBy;
-    }
+	public List<SysMenu> getChildren() {
+		return children;
+	}
 
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy == null ? null : createBy.trim();
-    }
+	public void setChildren(List<SysMenu> children) {
+		this.children = children;
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public Integer getLevel() {
+		return level;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
 
-    public String getLastUpdateBy() {
-        return lastUpdateBy;
-    }
+	public String getParentName() {
+		return parentName;
+	}
 
-    public void setLastUpdateBy(String lastUpdateBy) {
-        this.lastUpdateBy = lastUpdateBy == null ? null : lastUpdateBy.trim();
-    }
-
-    public Date getLastUpdateTime() {
-        return lastUpdateTime;
-    }
-
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
-    }
-
-    public Byte getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(Byte delFlag) {
-        this.delFlag = delFlag;
-    }
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+	
 }

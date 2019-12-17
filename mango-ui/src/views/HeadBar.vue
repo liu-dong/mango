@@ -115,11 +115,11 @@
         mounted() {
             var user = sessionStorage.getItem("user");
             if (user) {
-                let data = {name:user};
-                this.$api.user.findByName(data).then((res) => {
-                    debugger
+                let params = {name:user};
+                this.$api.user.findByName(params).then((res) => {
                     if(res.code === 200) {
                         this.user = res.data;
+                        debugger
                         this.user.avatar = require("@/assets/user.png")
                     }
                 })

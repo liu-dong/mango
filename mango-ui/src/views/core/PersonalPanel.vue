@@ -3,15 +3,15 @@
   <div class="personal-panel">
     <div class="personal-desc" :style="{'background':this.$store.state.app.themeColor}">
       <div class="avatar-container">
-        <img class="avatar" :src="require('@/assets/user.png')"/>
+        <img class="avatar" :src="user.avatar"/>
       </div>
       <div class="name-role">
-        <span class="sender">{{ user.name }} - {{ user.role }}</span>
+        <span class="sender">{{ user.name }} - {{ user.roleNames }}</span>
       </div>
-      <div class="registe-info">
-          <span class="registe-info">
+      <div class="register-info">
+          <span class="register-info">
             <li class="fa fa-clock-o"></li>
-            {{ user.registerInfo }}
+            {{ user.lastUpdateTime }}
           </span>
       </div>
     </div>
@@ -21,10 +21,10 @@
       <span class="relation-item">friends</span>
     </div>
     <div class="main-operation">
-        <span class="main-operation-item">
+        <span class="main-operation-item" @click="openPersonCenter">
           <el-button size="small" icon="fa fa-male"> 个人中心</el-button>
         </span>
-      <span class="main-operation-item">
+      <span class="main-operation-item" @click="openUpdatePasswordDialog">
           <el-button size="small" icon="fa fa-key"> 修改密码</el-button>
         </span>
     </div>
@@ -50,6 +50,24 @@
       <li class="fa fa-sign-out"></li>
       {{$t("common.logout")}}
     </div>
+    <!--修改密码界面-->
+    <!--<el-dialog title="修改密码" width="40%" :visible.sync="updatePwdDialogVisible" :close-on-click-modal="false" :modal="false">
+      <el-form :model="updatePwdDataForm" label-width="100px" :rules="updatePwdDataFormRules" ref="updatePwdDataForm" :size="size">
+        <el-form-item label="原密码" prop="password">
+          <el-input v-model="updatePwdDataForm.password" type="password" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="新密码" prop="newPassword">
+          <el-input v-model="updatePwdDataForm.newPassword" type="password" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="确认新密码" prop="confirmPassword">
+          <el-input v-model="updatePwdDataForm.comfirmPassword" type="password" auto-complete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button :size="size" @click.native="updatePwdDialogVisible = false">{{$t('action.cancel')}}</el-button>
+        <el-button :size="size" type="primary" @click.native="updatePassword" :loading="updatePwdLoading">{{$t('action.confirm')}}</el-button>
+      </div>
+    </el-dialog>-->
   </div>
 </template>
 
@@ -69,9 +87,18 @@
       }
     },
     data() {
-      return {}
+      return {
+      }
     },
     methods: {
+      // 打开个人中心
+      openPersonCenter: function () {
+        alert('待开发')
+      },
+      // 打开修改密码对话框
+      openUpdatePasswordDialog: function () {
+        this.updatePwdDialogVisible = true
+      },
       // 退出登录
       logout: function () {
         this.$confirm("确认退出吗?", "提示", {
@@ -87,6 +114,7 @@
       }
     },
     mounted() {
+
     }
   }
 </script>
@@ -102,39 +130,32 @@
     background: rgba(182, 172, 172, 0.1);
     margin: -14px;
   }
-
   .personal-desc {
     padding: 15px;
     color: #fff;
   }
-
   .avatar {
     width: 80px;
     height: 80px;
     border-radius: 90px;
   }
-
   .name-role {
     font-size: 16px;
     padding: 5px;
   }
-
   .personal-relation {
     font-size: 16px;
     padding: 12px;
     margin-right: 1px;
     background: rgba(200, 209, 204, 0.3);
   }
-
   .relation-item {
     padding: 12px;
   }
-
   .relation-item:hover {
     cursor: pointer;
     color: rgb(19, 138, 156);
   }
-
   .main-operation {
     padding: 8px;
     margin-right: 1px;
@@ -143,11 +164,9 @@
     border-top-width: 1px;
     border-top-style: solid;
   }
-
   .main-operation-item {
     margin: 15px;
   }
-
   .other-operation {
     padding: 15px;
     margin-right: 1px;
@@ -156,17 +175,14 @@
     border-top-width: 1px;
     border-top-style: solid;
   }
-
   .other-operation-item {
     padding: 12px;
   }
-
   .other-operation-item:hover {
     cursor: pointer;
     background: #9e94941e;
     color: rgb(19, 138, 156);
   }
-
   .personal-footer {
     margin-right: 1px;
     font-size: 14px;
@@ -177,7 +193,6 @@
     border-top-width: 1px;
     border-top-style: solid;
   }
-
   .personal-footer:hover {
     cursor: pointer;
     color: rgb(19, 138, 156);

@@ -79,62 +79,63 @@
     import PersonalPanel from "@/views/Core/PersonalPanel"
 
     export default {
-    components: {
-      Hamburger,
-      ThemePicker,
-      NoticePanel,
-      MessagePanel,
-      PersonalPanel
-    },
-    data() {
-      return {
-        user: {
-          name: "Louis",
-          avatar: "",
-          role: "超级管理员",
-          registerInfo: "注册时间：2018-12-20 "
+        components: {
+            Hamburger,
+            ThemePicker,
+            NoticePanel,
+            MessagePanel,
+            PersonalPanel
         },
-        activeIndex: '1',
-        langVisible: false
-      }
-    },
-    methods: {
-      openWindow(url) {
-        window.open(url)
-      },
-      selectNavBar(key, keyPath) {
-        console.log(key, keyPath)
-      },
-      // 折叠导航栏
-      onCollapse: function () {
-        this.$store.commit('onCollapse')
-      },
-      // 切换主题
-      onThemeChange: function (themeColor) {
-        this.$store.commit('setThemeColor', themeColor)
-      },
-      // 语言切换
-      changeLanguage(lang) {
-        lang === '' ? 'zh_cn' : lang
-        this.$i18n.locale = lang
-        this.langVisible = false
-      }
-    },
-    mounted() {
-      var user = sessionStorage.getItem("user")
+        data() {
+            return {
+                user: {},
+                activeIndex: '1',
+                langVisible: false
+            }
+        },
+        methods: {
+            openWindow(url) {
+                window.open(url)
+            },
+            selectNavBar(key, keyPath) {
+                console.log(key, keyPath)
+            },
+            // 折叠导航栏
+            onCollapse: function () {
+                this.$store.commit('onCollapse')
+            },
+            // 切换主题
+            onThemeChange: function (themeColor) {
+                this.$store.commit('setThemeColor', themeColor)
+            },
+            // 语言切换
+            changeLanguage(lang) {
+                lang === '' ? 'zh_cn' : lang
+                this.$i18n.locale = lang
+                this.langVisible = false
+            }
+        },
+        mounted() {
+            var user = sessionStorage.getItem("user");
         debugger
-      if (user) {
-        this.user.name = user
-        this.user.avatar = require("@/assets/user.png")
-      }
-    },
-    computed: {
-      ...mapState({
-        themeColor: state => state.app.themeColor,
-        collapse: state => state.app.collapse
-      })
+            if (user) {
+                let params = {name:user};
+                this.$api.user.findByName(params).then((res) => {
+                    debugger
+                    if(res.code === 200) {
+                        this.user = res.data;
+                        this.user.avatar = require("@/assets/user.png")
+                    }
+                })
+            }
+        },
+        computed: {
+            ...mapState({
+                themeColor: state => state.app.themeColor,
+                collapse: state => state.app.collapse
+            })
+        }
     }
-  }
 </script>
 
 <style scoped lang="scss">
@@ -179,6 +180,7 @@
     font-size: 20px;
     color: #fff;
     cursor: pointer;
+
     img {
       width: 40px;
       height: 40px;

@@ -30,9 +30,9 @@
 </template>
 
 <script>
-  import Cookies from "js-cookie"
+    import Cookies from "js-cookie"
 
-  export default {
+    export default {
     name: 'Login',
     data() {
       return {
@@ -56,17 +56,15 @@
     },
     methods: {
       login() {
-        this.loading = true
+        this.loading = true;
         let userInfo = { account:this.loginForm.account, password:this.loginForm.password,
-          captcha:this.loginForm.captcha }
-          debugger
+          captcha:this.loginForm.captcha };
         this.$api.login.login(userInfo).then((res) =>{
-          debugger
           if(res.msg != null) {
             this.$message({ message: res.msg, type: 'error' })
           }else {
-            Cookies.set('token', res.data.token) // 放置token到Cookie
-            sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
+            Cookies.set('token', res.data.token);// 放置token到Cookie
+            sessionStorage.setItem('user', userInfo.account);// 保存用户到本地会话
             this.$router.push('/')  // 登录成功，跳转到主页
           }
           this.loading = false

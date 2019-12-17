@@ -11,11 +11,11 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'font-awesome/css/font-awesome.min.css'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-Vue.use(ElementUI)
-Vue.use(api)
-Vue.prototype.global = global//挂载全局配置
+Vue.use(ElementUI);// 注册使用Element
+Vue.use(api);// 注册使用API模块
+Vue.prototype.global = global;//挂载全局配置
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -25,4 +25,4 @@ new Vue({
   components: {App},
   template: '<App/>'
 
-})
+});

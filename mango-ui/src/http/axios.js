@@ -17,11 +17,11 @@ export default function $axios(options) {
       headers: config.headers,// 请求头信息
       timeout: config.timeout,// 设置超时时间
       withCredentials: config.withCredentials// 携带凭证
-    })
+    });
     // request 请求拦截器
     instance.interceptors.request.use(
       config => {//没有方法名，传的参数为config 即function(config){}
-        let token = Cookies.get('token')
+        let token = Cookies.get('token');
         debugger
         // 发送请求时携带token
         if (token) {
@@ -34,18 +34,18 @@ export default function $axios(options) {
       },
       error => {
         debugger
-        return Promise.reject(error)
+        return Promise.reject(error);
         // 请求发生错误时
-        console.log('request:', error)
+        console.log('request:', error);
         // 判断请求超时
         if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
           console.log('timeout请求超时')
         }
         // 需要重定向到错误页面
-        const errorInfo = error.response
-        console.log(errorInfo)
+        const errorInfo = error.response;
+        console.log(errorInfo);
         if (errorInfo) {
-          error = errorInfo.data  // 页面那边catch的时候就能拿到详细的错误信息,看最下边的Promise.reject
+          error = errorInfo.data; // 页面那边catch的时候就能拿到详细的错误信息,看最下边的Promise.reject
           const errorStatus = errorInfo.status; // 404 403 500 ...
           router.push({
             path: `/error/${errorStatus}`
@@ -53,7 +53,7 @@ export default function $axios(options) {
         }
         return Promise.reject(error) // 在调用的那边可以拿到(catch)你想返回的错误信息
       }
-    )
+    );
     // response 响应拦截器
     instance.interceptors.response.use(
       response => {
@@ -65,48 +65,48 @@ export default function $axios(options) {
         if (err && err.response) {
           switch (err.response.status) {
             case 400:
-              err.message = '请求错误'
-              break
+              err.message = '请求错误';
+              break;
             case 401:
-              err.message = '未授权，请登录'
-              break
+              err.message = '未授权，请登录';
+              break;
             case 403:
-              err.message = '拒绝访问'
-              break
+              err.message = '拒绝访问';
+              break;
             case 404:
-              err.message = `请求地址出错: ${err.response.config.url}`
-              break
+              err.message = `请求地址出错: ${err.response.config.url}`;
+              break;
             case 408:
-              err.message = '请求超时'
-              break
+              err.message = '请求超时';
+              break;
             case 500:
-              err.message = '服务器内部错误'
-              break
+              err.message = '服务器内部错误';
+              break;
             case 501:
-              err.message = '服务未实现'
-              break
+              err.message = '服务未实现';
+              break;
             case 502:
-              err.message = '网关错误'
-              break
+              err.message = '网关错误';
+              break;
             case 503:
-              err.message = '服务不可用'
-              break
+              err.message = '服务不可用';
+              break;
             case 504:
-              err.message = '网关超时'
-              break
+              err.message = '网关超时';
+              break;
             case 505:
-              err.message = 'HTTP版本不受支持'
-              break
+              err.message = 'HTTP版本不受支持';
+              break;
             default:
           }
         }
-        console.error(err)
+        console.error(err);
         return Promise.reject(err) // 返回接口返回的错误信息
       }
-    )
+    );
     // 请求处理
     instance(options).then(res => {
-      resolve(res)
+      resolve(res);
       return false
     }).catch(error => {
       reject(error)

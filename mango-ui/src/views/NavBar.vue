@@ -6,6 +6,13 @@
       <img src="@/assets/logo.png"/>
       <div>{{collapse?'':appName}}</div>
     </div>
+    <!-- 导航菜单 -->
+    <el-menu ref="navmenu" default-active="1" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'"
+             :collapse="collapse" :collapse-transition="false" :unique-opened="true  "
+             @open="handleopen" @close="handleclose" @select="handleselect">
+      <!-- 导航菜单树组件，动态加载菜单 -->
+      <menu-tree v-for="item in navTree" :key="item.id" :menu="item"></menu-tree>
+    </el-menu>
   </div>
 </template>
 
@@ -17,10 +24,21 @@
       ...mapState({
         appName: state => state.app.appName,
         themeColor: state => state.app.themeColor,
-        collapse: state => state.app.collapse
+        collapse: state => state.app.collapse,
+        navTree: state=>state.menu.navTree
       })
     },
-    methods: {}
+    methods: {
+      handleopen() {
+        console.log('handleopen')
+      },
+      handleclose() {
+        console.log('handleclose')
+      },
+      handleselect(a, b) {
+        console.log('handleselect')
+      }
+    }
   }
 </script>
 
@@ -31,13 +49,20 @@
     left: 0;
     bottom: 0;
     z-index: 1020;
+    .el-menu {
+      position:absolute;
+      top: 60px;
+      bottom: 0px;
+      text-align: left;
+      // background-color: #2968a30c;
+    }
     .logo {
-      position: absolute;
+      position:absolute;
       top: 0px;
       height: 60px;
       line-height: 60px;
       background: #545c64;
-      cursor: pointer;
+      cursor:pointer;
       img {
         width: 40px;
         height: 40px;
@@ -46,7 +71,7 @@
         float: left;
       }
       div {
-        font-size: 22px;
+        font-size: 25px;
         color: white;
         text-align: left;
         padding-left: 20px;

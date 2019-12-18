@@ -12,8 +12,8 @@
     </span>
     <!-- 导航菜单 -->
     <span class="navbar">
-      <el-menu :default-active="activeIndex" class="el-menu-demo"
-               :background-color="themeColor" text-color="#fff" active-text-color="#ffd04b" mode="horizontal" @select="selectNavBar()">
+      <el-menu :default-active="activeIndex" class="el-menu-demo" :background-color="themeColor" text-color="#fff" active-text-color="#ffd04b" mode="horizontal"
+               @select="selectNavBar()">
         <el-menu-item index="1" @click="$router.push('/')">{{$t("common.home")}}</el-menu-item>
         <el-menu-item index="2" @click="openWindow('https://gitee.com/liuge1988/kitty/wikis/Home')">{{$t("common.doc")}}</el-menu-item>
         <el-menu-item index="3" @click="openWindow('https://www.cnblogs.com/xifengxiaoma/')">{{$t("common.blog")}}</el-menu-item>
@@ -57,7 +57,7 @@
         </el-menu-item>
         <el-menu-item index="5" v-popover:popover-personal>
           <!-- 用户信息 -->
-          <span class="user-info"><img :src="user.avatar"/>{{user.name}}</span>
+          <span class="user-info"><img :src="user.avatar" alt="用户头像"/>{{user.name}}</span>
           <el-popover ref="popover-personal" placement="bottom-end" trigger="click" :visible-arrow="false">
             <personal-panel :user="user"></personal-panel>
           </el-popover>
@@ -68,14 +68,14 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-  import Hamburger from "@/components/Hamburger"
-  import ThemePicker from "@/components/ThemePicker"
-  import NoticePanel from "@/views/Core/NoticePanel"
-  import MessagePanel from "@/views/Core/MessagePanel"
-  import PersonalPanel from "@/views/Core/PersonalPanel"
+    import {mapState} from 'vuex'
+    import Hamburger from "@/components/Hamburger"
+    import ThemePicker from "@/components/ThemePicker"
+    import NoticePanel from "@/views/Core/NoticePanel"
+    import MessagePanel from "@/views/Core/MessagePanel"
+    import PersonalPanel from "@/views/Core/PersonalPanel"
 
-  export default {
+    export default {
         components: {
             Hamburger,
             ThemePicker,
@@ -107,19 +107,19 @@
             },
             // 语言切换
             changeLanguage(lang) {
-                lang === '' ? 'zh_cn' : lang
-                this.$i18n.locale = lang
+                lang === '' ? 'zh_cn' : lang;
+                this.$i18n.locale = lang;
                 this.langVisible = false
             }
         },
         mounted() {
-            var user = sessionStorage.getItem("user");
+            let user = sessionStorage.getItem("user");
             if (user) {
-                let params = {name:user};
+                let params = {name: user};
                 this.$api.user.findByName(params).then((res) => {
-                    if(res.code === 200) {
+                    if (res.code === 200) {
                         this.user = res.data;
-                        debugger
+                    debugger
                         this.user.avatar = require("@/assets/user.png")
                     }
                 })
@@ -146,15 +146,19 @@
     border-left-width: 1px;
     border-left-style: solid;
   }
+
   .hamburg {
     float: left;
   }
+
   .navbar {
     float: left;
   }
+
   .toolbar {
     float: right;
   }
+
   .lang-item {
     font-size: 16px;
     padding-left: 8px;
@@ -162,28 +166,34 @@
     padding-bottom: 8px;
     cursor: pointer;
   }
+
   .lang-item:hover {
     font-size: 18px;
     background: #b0d6ce4d;
   }
+
   .user-info {
     font-size: 20px;
     color: #fff;
     cursor: pointer;
+
     img {
       width: 40px;
       height: 40px;
       border-radius: 10px;
-      margin: 10px 0px 10px 10px;
+      margin: 10px 0 10px 10px;
       float: right;
     }
   }
+
   .badge {
     line-height: 18px;
   }
+
   .position-left {
     left: 200px;
   }
+
   .position-collapse-left {
     left: 65px;
   }

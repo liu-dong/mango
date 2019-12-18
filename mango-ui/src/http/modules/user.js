@@ -37,11 +37,19 @@ export const findByName = (params) => {
     method: 'get',
     params
   })
-}
+};
 // 查找用户的菜单权限标识集合
 export const findPermissions = (params) => {
   return axios({
     url: '/user/findPermissions',
+    method: 'get',
+    params
+  })
+};
+// 更新用户密码
+export const updatePassword = (params) => {
+  return axios({
+    url: '/user/updatePassword',
     method: 'get',
     params
   })

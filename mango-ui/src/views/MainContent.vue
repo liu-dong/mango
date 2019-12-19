@@ -32,7 +32,7 @@
     top: 60px;
     left: 1px;
     right: 1px;
-    bottom: 0px;
+    bottom: 0;
     background: rgba(67, 69, 70, 0.1);
     .main-content {
       position: absolute;

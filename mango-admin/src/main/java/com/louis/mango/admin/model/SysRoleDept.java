@@ -1,75 +1,25 @@
 package com.louis.mango.admin.model;
 
-import java.util.Date;
-
-public class SysRoleDept {
-    private Long id;
+public class SysRoleDept extends BaseModel {
 
     private Long roleId;
 
     private Long deptId;
 
-    private String createBy;
+	public Long getRoleId() {
+		return roleId;
+	}
 
-    private Date createTime;
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
 
-    private String lastUpdateBy;
+	public Long getDeptId() {
+		return deptId;
+	}
 
-    private Date lastUpdateTime;
+	public void setDeptId(Long deptId) {
+		this.deptId = deptId;
+	}
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
-
-    public Long getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Long deptId) {
-        this.deptId = deptId;
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy == null ? null : createBy.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getLastUpdateBy() {
-        return lastUpdateBy;
-    }
-
-    public void setLastUpdateBy(String lastUpdateBy) {
-        this.lastUpdateBy = lastUpdateBy == null ? null : lastUpdateBy.trim();
-    }
-
-    public Date getLastUpdateTime() {
-        return lastUpdateTime;
-    }
-
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
-    }
 }

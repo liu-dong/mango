@@ -10,11 +10,11 @@
 </template>
 
 <script>
-  import HeadBar from "./HeadBar"
-  import NavBar from "./NavBar"
-  import MainContent from "./MainContent"
+    import HeadBar from "./HeadBar"
+    import NavBar from "./NavBar"
+    import MainContent from "./MainContent"
 
-  export default {
+    export default {
     components:{
       HeadBar,
       NavBar,
@@ -26,10 +26,10 @@
 <style scoped lang="scss">
   .container {
     position:absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     // background: rgba(224, 234, 235, 0.1);
   }
 </style>

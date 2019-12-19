@@ -7,7 +7,7 @@ import iframe from './modules/iframe'
 import user from './modules/user'
 import menu from './modules/menu'
 
-Vue.use(vuex);
+Vue.use(vuex);//vuex的作用：管理共享状态 主要包括state、getter、mutations、actions
 
 const store = new vuex.Store({
   modules: {
@@ -17,6 +17,6 @@ const store = new vuex.Store({
     user: user,
     menu: menu
   }
-})
+});
 
 export default store

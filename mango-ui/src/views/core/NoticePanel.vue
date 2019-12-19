@@ -6,7 +6,7 @@
         <span class="notice-icon">
           <li :class="item.icon"></li>
         </span>
-        <span class="notice-cotent">
+        <span class="notice-content">
           {{ item.content }}
         </span>
       </div>

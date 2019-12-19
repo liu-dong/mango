@@ -68,14 +68,14 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-  import Hamburger from "@/components/Hamburger"
-  import ThemePicker from "@/components/ThemePicker"
-  import NoticePanel from "@/views/Core/NoticePanel"
-  import MessagePanel from "@/views/Core/MessagePanel"
-  import PersonalPanel from "@/views/Core/PersonalPanel"
+    import {mapState} from 'vuex'
+    import Hamburger from "@/components/Hamburger"
+    import ThemePicker from "@/components/ThemePicker"
+    import NoticePanel from "@/views/core/NoticePanel"
+    import MessagePanel from "@/views/core/MessagePanel"
+    import PersonalPanel from "@/views/core/PersonalPanel"
 
-  export default {
+    export default {
         components: {
             Hamburger,
             ThemePicker,

@@ -12,7 +12,7 @@
         <span class="time">
           <li class="fa fa-clock-o"></li> {{ item.time }}
         </span>
-        <div class="message-cotent">
+        <div class="message-content">
           {{ item.content }}
         </div>
       </div>

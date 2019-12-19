@@ -25,6 +25,7 @@
         },
         methods: {
             handleRoute(menu) {
+                debugger
                 // 如果是嵌套页面，转换成iframe的path
                 let path = getIFramePath(menu.url);
                 if (!path) {

@@ -5,6 +5,7 @@ export default {
     getters: {},
     mutations: {
         setNavTree(state, navTree) {
+            debugger
             state.navTree = navTree;
         }
     },

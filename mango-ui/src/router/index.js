@@ -72,6 +72,7 @@ function addDynamicMenuAndRoutes(userName, to, from) {
     }
     api.menu.findNavTree({'userName': userName})//查询导航树
         .then(res => {
+            debugger
             // 添加动态路由
             let dynamicRoutes = addDynamicRoutes(res.data);
             // 处理静态组件绑定路由
@@ -115,8 +116,8 @@ function handleIFrameUrl(path) {
  * @param {*} routes 递归创建的动态(菜单)路由
  */
 function addDynamicRoutes(menuList = [], routes = []) {
-debugger
-    let temp = [];
+    debugger
+    let temp = [];//子菜单列表
     for (let i = 0; i < menuList.length; i++) {
         if (menuList[i].children && menuList[i].children.length >= 1) {
             temp = temp.concat(menuList[i].children)

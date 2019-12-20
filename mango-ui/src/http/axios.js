@@ -8,9 +8,7 @@ import Cookies from "js-cookie";
 import router from '@/router'
 
 export default function $axios(options) {
-  debugger
   return new Promise((resolve, reject) => {
-    debugger
     //导入类配置文件的信息
     const instance = axios.create({
       baseURL: config.baseUrl,// 基础url前缀
@@ -22,7 +20,6 @@ export default function $axios(options) {
     instance.interceptors.request.use(
       config => {//没有方法名，传的参数为config 即function(config){}
         let token = Cookies.get('token');
-        debugger
         // 发送请求时携带token
         if (token) {
           config.headers.token = token
@@ -33,7 +30,6 @@ export default function $axios(options) {
         return config
       },
       error => {
-        debugger
         return Promise.reject(error);
         // 请求发生错误时
         console.log('request:', error);
@@ -57,11 +53,9 @@ export default function $axios(options) {
     // response 响应拦截器
     instance.interceptors.response.use(
       response => {
-        debugger
         return response.data
       },
       err => {
-        debugger
         if (err && err.response) {
           switch (err.response.status) {
             case 400:

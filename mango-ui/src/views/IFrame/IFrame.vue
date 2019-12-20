@@ -26,7 +26,7 @@ export default {
         spinner: "el-icon-loading",
         background: "rgba(0, 0, 0, 0.5)",
         // fullscreen: false,
-        target: document.querySelector("#main-container ")
+        target: document.querySelector("#main-container")
       })
     },
     onLoaded: function() {

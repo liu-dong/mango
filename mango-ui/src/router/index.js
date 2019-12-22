@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Login from '@/views/Login'
 import NotFound from '@/views/404'
 import Home from '@/views/Home'
-// import Intro from '@/views/Intro/Intro'
 import api from '@/http/api'
 import store from '@/store'
 import Intro from '@/views/Intro/Intro'
@@ -109,6 +108,7 @@ function addDynamicMenuAndRoutes(userName, to, from) {
  * 处理IFrame嵌套页面
  */
 function handleIFrameUrl(path) {
+    debugger
     // 嵌套页面，保存iframeUrl到store，供IFrame组件读取展示
     let url = path;
     let length = store.state.iframe.iframeUrls.length;

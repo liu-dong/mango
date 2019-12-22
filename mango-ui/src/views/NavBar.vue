@@ -6,11 +6,13 @@
             <img v-if="collapse" src="@/assets/logo.png"/> <div>{{collapse?'':appName}}</div>
         </div>
         <!-- 导航菜单 -->
-        <el-menu ref="navmenu" default-active="1" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'"
-                 :collapse="collapse" :collapse-transition="false" :unique-opened="true  "
-                 @open="handleopen" @close="handleclose" @select="handleselect">
+        <el-menu ref="navMenu" default-active="1" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'"
+                 :collapse="collapse" :collapse-transition="false" :unique-opened="true"
+                 @open="handleOpen" @close="handleClose" @select="handleSelect">
             <!-- 导航菜单树组件，动态加载菜单 -->
-            <menu-tree v-for="item in navTree" :key="item.id" :menu="item"></menu-tree>
+            <menu-tree v-for="item in navTree" :key="item.id" :menu="item">
+                <span>{{item}}</span>
+            </menu-tree>
         </el-menu>
     </div>
 </template>
@@ -47,14 +49,14 @@
             this.handleRoute(this.$route)
         },
         methods: {
-            handleopen() {
-                console.log('handleopen')
+            handleOpen() {
+                console.log('handleOpen')
             },
-            handleclose() {
-                console.log('handleclose')
+            handleClose() {
+                console.log('handleClose')
             },
-            handleselect(a, b) {
-                console.log('handleselect')
+            handleSelect() {
+                console.log('handleSelect')
             },
             // 路由操作处理
             handleRoute (route) {
@@ -71,9 +73,9 @@
                 }
                 this.mainTabsActiveName = tab.name;
                 // 切换标签页时同步更新高亮菜单
-                if(this.$refs.navmenu != null) {
-                    this.$refs.navmenu.activeIndex = '' + route.meta.index;
-                    this.$refs.navmenu.initOpenedMenu()
+                if(this.$refs.navMenu != null) {
+                    this.$refs.navMenu.activeIndex = '' + route.meta.index;
+                    this.$refs.navMenu.initOpenedMenu()
                 }
             }
         }
@@ -83,20 +85,20 @@
 <style scoped lang="scss">
     .menu-bar-container {
         position: fixed;
-        top: 0px;
+        top: 0;
         left: 0;
         bottom: 0;
         z-index: 1020;
         .el-menu {
             position:absolute;
             top: 60px;
-            bottom: 0px;
+            bottom: 0;
             text-align: left;
             // background-color: #2968a30c;
         }
         .logo {
             position:absolute;
-            top: 0px;
+            top: 0;
             height: 60px;
             line-height: 60px;
             background: #545c64;
@@ -104,7 +106,7 @@
             img {
                 width: 40px;
                 height: 40px;
-                border-radius: 0px;
+                border-radius: 0;
                 margin: 10px 10px 10px 10px;
                 float: left;
             }

@@ -4,7 +4,6 @@ import com.louis.mango.backup.constants.BackupConstants;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -86,6 +85,7 @@ public class MySqlBackupRestoreUtils {
 			}
 		}
 		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(BackupConstants.BACKUP_EXE_PATH);//mysql的路径
 		stringBuilder.append("mysql -h").append(host).append(" -u").append(username).append(" -p").append(password);
 		stringBuilder.append(" ").append(database).append(" < ").append(restoreFilePath);
 		try {
@@ -108,9 +108,7 @@ public class MySqlBackupRestoreUtils {
 			shell = "cmd";
 			c = "/c";
 		}
-		String[] cmd = { shell, c, command };
-		System.out.println(Arrays.toString(cmd));
-		return cmd;
+		return new String[]{ shell, c, command };
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -124,10 +122,20 @@ public class MySqlBackupRestoreUtils {
 		String fileName = "mango.sql";
 		backup(host, username, password, backupFolderPath, fileName, database);
 		System.out.println("备份成功");*/
-
+		String shell = "cmd";
+		String c = "/c";
+		String string = "cmd /c D:\\\"MySQL\\MySQL Server 5.7\\bin\"\\mysql -uroot -p123456 mango < G:\\mango_backup\\backup_2019-12-24_1353\\mango.sql";
+		String string1 = "D:\\\"MySQL\\MySQL Server 5.7\\bin\"\\mysql -uroot -p123456 mango < G:\\mango_backup\\backup_2019-12-24_1353\\mango.sql";
 //		String sql = "cmd /c mysqldump --opt  --add-drop-database  --add-drop-table  -hlocalhost -uroot -p123456 --result-file=G:\\mango_backup\\backup_2019-12-24_1136\\mango.sql --default-character-set=utf8 mango";
 		String sql = "cmd /c D:\\\"MySQL\\MySQL Server 5.7\\bin\"\\mysqldump --opt  --add-drop-database  --add-drop-table -uroot -p123456 --result-file=G:\\\\mango_backup\\\\mango.sql --default-character-set=utf8 mango";
-		Process process = Runtime.getRuntime().exec(sql);
+		String[] cmd = { shell, c, string1 };
+		try {
+
+			Process process = Runtime.getRuntime().exec(cmd);
+		}catch (Exception e){
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
 		/*System.out.println("开始还原");
 		String restoreFilePath = "F:/dev/mango.sql";
 		restore(restoreFilePath, host, username, password, database);

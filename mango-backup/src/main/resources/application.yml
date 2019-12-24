@@ -1,8 +1,23 @@
 server:
     port: 8082
-#spring:
-#    application:
-#        name:mango-backup
+
+#配置监控服务信息
+spring:
+    application:
+        name: mango-backup
+    boot:
+        admin:
+            client:
+                url: "http://localhost:8083" #监控服务器的地址
+# 开放健康检查接口
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: ALWAYS
 # backup datasource
 mango:
     backup:

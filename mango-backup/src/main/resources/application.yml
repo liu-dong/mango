@@ -1,8 +1,8 @@
 server:
-    port: 8002
-spring:
-    application:
-        name:mango-backup
+    port: 8082
+#spring:
+#    application:
+#        name:mango-backup
 # backup datasource
 mango:
     backup:

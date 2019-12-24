@@ -36,6 +36,7 @@
         <module>../mango-admin</module>
         <module>../mango-common</module>
         <module>../mango-core</module>
+        <module>../mango-backup</module>
     </modules>
 
 </project>

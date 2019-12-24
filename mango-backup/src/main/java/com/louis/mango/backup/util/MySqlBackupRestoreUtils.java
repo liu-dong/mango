@@ -38,8 +38,8 @@ public class MySqlBackupRestoreUtils {
 		String backupFilePath = backupFolderPath + fileName;
 		// 拼接命令行的命令
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(BackupConstants.BACKUP_EXE_PATH);//mysqldump的路径
-		stringBuilder.append("mysqldump ");
+		stringBuilder.append(BackupConstants.BACKUP_COMMAND_PATH);//mysqldump的路径
+//		stringBuilder.append("mysqldump ");
 		/*
 		 	--opt：等同于--add-drop-table, --add-locks, --create-options,
 		 		--quick, --extended-insert,--lock-tables,  --set-charset,
@@ -85,8 +85,8 @@ public class MySqlBackupRestoreUtils {
 			}
 		}
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(BackupConstants.BACKUP_EXE_PATH);//mysql的路径
-		stringBuilder.append("mysql -h").append(host).append(" -u").append(username).append(" -p").append(password);
+		stringBuilder.append(BackupConstants.RESTORE_COMMAND_PATH);//mysql的路径
+		stringBuilder.append(" -h").append(host).append(" -u").append(username).append(" -p").append(password);
 		stringBuilder.append(" ").append(database).append(" < ").append(restoreFilePath);
 		try {
 			Process process = Runtime.getRuntime().exec(getCommand(stringBuilder.toString()));
@@ -122,16 +122,11 @@ public class MySqlBackupRestoreUtils {
 		String fileName = "mango.sql";
 		backup(host, username, password, backupFolderPath, fileName, database);
 		System.out.println("备份成功");*/
-		String shell = "cmd";
-		String c = "/c";
-		String string = "cmd /c D:\\\"MySQL\\MySQL Server 5.7\\bin\"\\mysql -uroot -p123456 mango < G:\\mango_backup\\backup_2019-12-24_1353\\mango.sql";
-		String string1 = "D:\\\"MySQL\\MySQL Server 5.7\\bin\"\\mysql -uroot -p123456 mango < G:\\mango_backup\\backup_2019-12-24_1353\\mango.sql";
-//		String sql = "cmd /c mysqldump --opt  --add-drop-database  --add-drop-table  -hlocalhost -uroot -p123456 --result-file=G:\\mango_backup\\backup_2019-12-24_1136\\mango.sql --default-character-set=utf8 mango";
-		String sql = "cmd /c D:\\\"MySQL\\MySQL Server 5.7\\bin\"\\mysqldump --opt  --add-drop-database  --add-drop-table -uroot -p123456 --result-file=G:\\\\mango_backup\\\\mango.sql --default-character-set=utf8 mango";
-		String[] cmd = { shell, c, string1 };
+		String sql = "cmd /c D:\\\"MySQL\\MySQL Server 5.7\\bin\"\\mysqldump --opt --add-drop-database --add-drop-table -uroot -p123456 --result-file=F:\\mango_backup\\backup_2019-12-24_2115\\mango.sql --default-character-set=utf8 mango";
+		String string = "cmd /c \"D:\\MySQL\\MySQL Server 5.7\\bin\\mysql.exe\" -uroot -p123456 mango-test < F:\\mango_backup\\backup_2019-12-24_2115\\mango.sql";
 		try {
 
-			Process process = Runtime.getRuntime().exec(cmd);
+			Process process = Runtime.getRuntime().exec(string);
 		}catch (Exception e){
 			e.printStackTrace();
 			System.out.println(e.getMessage());

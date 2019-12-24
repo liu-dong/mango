@@ -1,5 +1,5 @@
 server:
-    port: 61008
+    port: 8081
 spring:
     datasource:
         name: druidDataSource

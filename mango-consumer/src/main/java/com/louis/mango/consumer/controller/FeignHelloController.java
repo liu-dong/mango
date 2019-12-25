@@ -9,11 +9,11 @@ public class FeignHelloController {
 
     @Autowired
     private MangoProducerService mangoProducerService;
-    
+
     @RequestMapping("/feign/call")
     public String call() {
         // 像调用本地服务一样
         return mangoProducerService.hello();
     }
-    
+
 }

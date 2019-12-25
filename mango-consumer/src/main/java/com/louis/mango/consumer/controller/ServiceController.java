@@ -14,7 +14,7 @@ public class ServiceController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-   /**
+    /**
      * 获取所有服务
      */
     @RequestMapping("/services")

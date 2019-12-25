@@ -3,10 +3,16 @@ server:
 spring:
     application:
         name: mango-admin
-#    boot:
-#        admin:
-#            client:
-#                url: "http://localhost:8083"
+    boot:
+        admin:
+            client:
+                url: "http://localhost:8083"
+    cloud:
+        consul:
+            host: localhost
+            port: 8500
+            discovery:
+                serviceName: ${spring.application.name}    # 注册到consul的服务名称
     datasource:
         name: druidDataSource
         type: com.alibaba.druid.pool.DruidDataSource
@@ -29,13 +35,6 @@ spring:
             pool-prepared-statements: true
             max-open-prepared-statements: 50
             max-pool-prepared-statement-per-connection-size: 20
-
-    cloud:
-        consul:
-            host: localhost
-            port: 8500
-            discovery:
-                serviceName: ${spring.application.name}    # 注册到consul的服务名称
 
 # 开放健康检查接口
 management:

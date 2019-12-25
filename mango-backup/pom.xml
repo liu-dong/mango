@@ -45,11 +45,10 @@
             <version>2.0.4</version>
         </dependency>
         <!--consul-->
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
-        </dependency>-->
-
+        </dependency>
         <dependency>
             <groupId>com.louis</groupId>
             <artifactId>mango-common</artifactId>
@@ -58,7 +57,7 @@
     </dependencies>
 
     <!--spring cloud-->
-    <!--<dependencyManagement>
+    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -68,7 +67,7 @@
                 <scope>import</scope>
             </dependency>
         </dependencies>
-    </dependencyManagement>-->
+    </dependencyManagement>
 
     <build>
         <resources>

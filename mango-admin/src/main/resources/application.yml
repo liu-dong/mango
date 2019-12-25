@@ -1,6 +1,12 @@
 server:
     port: 8081
 spring:
+    application:
+        name: mango-admin
+#    boot:
+#        admin:
+#            client:
+#                url: "http://localhost:8083"
     datasource:
         name: druidDataSource
         type: com.alibaba.druid.pool.DruidDataSource
@@ -23,13 +29,14 @@ spring:
             pool-prepared-statements: true
             max-open-prepared-statements: 50
             max-pool-prepared-statement-per-connection-size: 20
-    #配置监控服务信息
-    application:
-        name: mango-admin
-    boot:
-        admin:
-            client:
-                url: "http://localhost:8083" #监控服务器的地址
+
+    cloud:
+        consul:
+            host: localhost
+            port: 8500
+            discovery:
+                serviceName: ${spring.application.name}    # 注册到consul的服务名称
+
 # 开放健康检查接口
 management:
     endpoints:

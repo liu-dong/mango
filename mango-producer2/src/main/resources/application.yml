@@ -2,7 +2,7 @@ server:
   port: 8085
 spring:
   application:
-    name: mango-producer2
+    name: mango-producer
   cloud:
     consul:
       host: localhost

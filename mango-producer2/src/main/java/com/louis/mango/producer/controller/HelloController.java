@@ -1,4 +1,4 @@
-package com.louis.mango.producer2.controller;
+package com.louis.mango.producer.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +8,6 @@ public class HelloController {
 
     @RequestMapping("/hello")
     public String hello() {
-        return "hello Mango !";
+        return "hello Mango Producer2 !";
     }
 }

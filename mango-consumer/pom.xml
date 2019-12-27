@@ -12,7 +12,7 @@
     <artifactId>mango-consumer</artifactId>
     <version>${project.version}</version>
     <name>mango-consumer</name>
-    <description>Demo project for Spring Boot</description>
+    <description>消费者</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -14,9 +14,9 @@
 	<artifactId>mango-producer</artifactId>
 	<version>${project.version}</version>
 	<packaging>jar</packaging>
-	
+
 	<name>mango-producer</name>
-	<description>mango-producer</description>
+	<description>生产者</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,7 +65,7 @@
 	        <scope>test</scope>
 	    </dependency>
 	</dependencies>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -77,7 +77,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<build>
 		<plugins>
 			<plugin>

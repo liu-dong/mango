@@ -80,9 +80,9 @@
             refreshCaptcha: function () {
                 this.loginForm.src = this.global.baseUrl + "/captcha.jpg?t=" + new Date().getTime();
             },
-            reset() {
+            /*reset() {
                 this.$refs.loginForm.resetFields()
-            }
+            }*/
         },
         mounted() {
             this.refreshCaptcha()
